@@ -1,0 +1,19 @@
+{
+  "name": "avisador",
+  "version": "1.0.0",
+  "description": "avisador de twitch",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron preload.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Juan Miguel",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^20.0.0",
+    "sound-play": "^1.1.0",
+    "start": "^5.1.0",
+    "tmi.js": "^1.8.5"
+  }
+}
