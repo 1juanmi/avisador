@@ -1,19 +1,34 @@
 {
   "name": "avisador",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "avisador de twitch",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron preload.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder build --win"
   },
   "keywords": [],
   "author": "Juan Miguel",
   "license": "ISC",
   "dependencies": {
-    "electron": "^20.0.0",
+    "axios": "^0.27.2",
     "sound-play": "^1.1.0",
     "start": "^5.1.0",
     "tmi.js": "^1.8.5"
-  }
+  },
+  "devDependencies": {
+    "electron": "^20.0.2"
+  },
+  "build": {
+    "appId": "com.juanmiguel.avisador",
+    "productName": "avisador",
+    "icon": "src/icon.png",
+    "files": [
+      "**/*"
+    ],
+"extraResources": [
+  "sonido/**/*"
+]
+}
 }

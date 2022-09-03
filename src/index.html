@@ -1,0 +1,68 @@
+<!-- creacion de una pagina basica -->
+<html lang="es">    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Avisador</title>
+        <link rel="stylesheet" href="css/estilos.css">
+    </head>
+    <body>
+        <h1>Configura el avisador</h1>
+        <p>Introduce el nombre del canal y  tiempo en segundos (1-120s)</p>
+            <input type="text" id="nombre" placeholder="Ingrese canal"></input>
+            <input type="number" min="0" max="120" id="tiempo" placeholder="Ingrese tiempo"></input>
+            
+            <p></p>
+            <button id="save" onclick="saveconf()">Guardar configuracion</button>
+            <p></p>
+            <button id="start" onclick="start()">Iniciar</button>
+            <button id="stop" onclick="end()">Finalizar</button>
+
+            <script>
+                var botsave = document.getElementById("save");
+                var botstart = document.getElementById("start");
+                var botstop = document.getElementById("stop");
+
+                botstart.disabled = true;
+                botstop.disabled = true;
+                botsave.disabled = false;
+
+
+
+                function saveconf() {
+                    botstart.disabled = false;
+                    botstop.disabled = true;
+                    botsave.disabled = false;
+
+                var name=document.getElementById("nombre").value;
+                var time=document.getElementById("tiempo").value;
+                window.localStorage.setItem("name",name);
+                window.localStorage.setItem("time",time);
+                if(!(0<time<120)){time=60;}
+                console.log(time+"s");
+                window.electronApi.saveconf(name,time);
+            
+                }
+                function start() {
+                    botstart.disabled = true;
+                    botstop.disabled = false;
+                    botsave.disabled = true;
+                    window.electronApi.start();
+                }
+                 function end() {
+                    botstart.disabled = false;
+                    botstop.disabled = true;
+                    botsave.disabled = false;
+                    window.electronApi.end();
+                 }
+                window.document.addEventListener("DOMContentLoaded", function() {
+                    var name=window.localStorage.getItem("name");
+                    var time=window.localStorage.getItem("time");
+                    document.getElementById("nombre").value=name;
+                    document.getElementById("tiempo").value=time;
+                    saveconf();
+                }); 
+
+            </script>
+    </body>
+</html>

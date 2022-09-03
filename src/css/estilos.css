@@ -1,0 +1,61 @@
+:root {
+    --main-click-color: grey;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    width: 300px ;
+    height: 30px;
+}
+button {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    width: 300px;
+    height: 30px;
+}
+#save {
+    background-color: #636363;
+    color: white;
+    width: 604px;
+    height: 30px;
+}
+#start {
+    background-color: #4CAF50;
+    color: white;
+   
+}
+#stop {
+    background-color: #d11c1c;
+    color: white;
+}
+
+#save:active {
+    background-color: var(--main-click-color);
+    color:black;
+}
+#start:active {
+    background-color: var(--main-click-color);
+    color:black;
+}
+#stop:active {
+    background-color: var(--main-click-color);
+    color:black;
+}
+
+#save:disabled {
+    background-color: #ccc;
+    color: black;
+}
+
+#start:disabled {
+    background-color: #ccc;
+    color: black;
+}
+
+#stop:disabled {
+    background-color: #ccc;
+    color: black;
+}
