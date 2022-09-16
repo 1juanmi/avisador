@@ -1,6 +1,6 @@
 {
   "name": "avisador",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "avisador de twitch",
   "main": "src/main.js",
   "scripts": {
@@ -28,7 +28,9 @@
       "**/*"
     ],
 "extraResources": [
-  "sonido/**/*"
-]
+{
+     "from": "./resources",
+     "to": "../resources"
+}]
 }
 }

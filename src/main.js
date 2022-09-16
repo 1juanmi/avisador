@@ -1,5 +1,5 @@
 const { app, BrowserWindow,ipcMain } = require("electron");
-const {start,stop,setconfig} = require("./index.js");
+const {start,stop,setconfig,setVolume} = require("./index.js");
 const path = require("path");
 const url = require("url");
 
@@ -36,6 +36,7 @@ app.whenReady().then(() => {
   ipcMain.on("start",start);
   ipcMain.on("stop",stop);
   ipcMain.on("setconfig",(event,name,time)=>setconfig(name,time));
+  ipcMain.on("setVolume",(event,volume)=>setVolume(volume));
 
 });
 

@@ -17,7 +17,12 @@
             <p></p>
             <button id="start" onclick="start()">Iniciar</button>
             <button id="stop" onclick="end()">Finalizar</button>
-
+            <p></p>
+            <div class="slidecontainer">
+                <p> Volumen <span id="volumenS"> </span> % </p>
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+            </div>    
+            
             <script>
                 var botsave = document.getElementById("save");
                 var botstart = document.getElementById("start");
@@ -55,13 +60,23 @@
                     botsave.disabled = false;
                     window.electronApi.end();
                  }
+                 function setVolume() {
+                    var volume = document.getElementById("myRange").value;
+                    window.electronApi.setVolume(volume);
+                    window.localStorage.setItem("volume",volume);
+                    document.getElementById("volumenS").innerHTML = volume;
+                 }
                 window.document.addEventListener("DOMContentLoaded", function() {
                     var name=window.localStorage.getItem("name");
                     var time=window.localStorage.getItem("time");
+                    var volume=window.localStorage.getItem("volume");
                     document.getElementById("nombre").value=name;
                     document.getElementById("tiempo").value=time;
+                    document.getElementById("myRange").value=volume;
                     saveconf();
+                    setVolume();
                 }); 
+                window.document.getElementById("myRange").addEventListener("change", setVolume);
 
             </script>
     </body>

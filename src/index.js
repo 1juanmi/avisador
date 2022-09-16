@@ -6,6 +6,7 @@ const path = require("path");
 let lastmessage = new Date();
 
 var time = 0;
+var volume = 0.5;
 
 const options = {
   options: {
@@ -32,10 +33,11 @@ function inicializar() {
     //console.log(ctx);
     if ((new Date().getTime() - lastmessage.getTime()) / 1000 > time) {
       //client.say(target, "test");
-      console.log("sonido");
-      sound.play(path.join(__dirname, "sonido.mp3")).catch(console.log);
+      console.log("sonido, volumen: " + volume);
+      
+      sound.play(path.join(__dirname, "sonido.mp3"), (volume)/100).catch(console.log);
       console.log(path.join(__dirname, "sonido.mp3"));
-      sound.play(path.join(__dirname, "../../sonido/sonido.mp3")).catch(console.log);
+      sound.play(path.join(__dirname, "../../sonido/sonido.mp3"),(volume)/100).catch(console.log);
       //sound.play("C:\\Windows\\Media\\Windows Notify System Generic.wav");
     }
 
@@ -96,4 +98,7 @@ module.exports = {
   })}
   ),
   setconfig,
+  setVolume: (vol) => {
+    volume = vol;
+  },
 };

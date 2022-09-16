@@ -9,4 +9,7 @@ contextBridge.exposeInMainWorld("electronApi", {
   saveconf: (name, time) => {
     ipcRenderer.send("setconfig", name, time);
   },
+  setVolume: (volume) => {
+    ipcRenderer.send("setVolume", volume);
+  },
 });
