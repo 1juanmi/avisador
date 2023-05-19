@@ -47,12 +47,8 @@ function inicializar() {
 }
 
 async function check_user(user){
-  try {
-      await axios.get("https://avatars.antonioma.com/api/twitch/" + user);
-      return true;
-  } catch (error) {
-    return false;
-  } 
+  //funcion ya no disponible
+return true
 }
 
 async function setconfig(_name, _time) {
